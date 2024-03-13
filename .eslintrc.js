@@ -7,7 +7,8 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:react/recommended',
-		"next/core-web-vitals"
+		"next/core-web-vitals",
+		"prettier"
 	],
 	'overrides': [
 		{
@@ -34,7 +35,7 @@ module.exports = {
 	'rules': {
 		'indent': [
 			'error',
-			'tab'
+			4
 		],
 		'linebreak-style': [
 			'error',
