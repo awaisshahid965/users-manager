@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Setup and Run Guide
 
-## Getting Started
+This guide walks you through the steps to set up and run the project in a development environment, ensuring adherence to best practices.
 
-First, run the development server:
+## Prerequisites
+
+Make sure the following software is installed on your machine:
+
+- [Node.js](https://nodejs.org/en/) (version 20.11.1 or higher)
+- [npm](https://www.npmjs.com/) (version 10.2.4 or higher)
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/awaisshahid965/users-manager.git
+cd users-manager
+```
+
+## Install Dependencies
+
+Navigate to the project directory and install the dependencies using the following command:
+
+```bash
+npm install
+```
+
+## Run the Application
+
+Start the development server with the following command:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This command initiates the development server. Open your browser and go to `http://localhost:3000` to access the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## FYI: Limitations of randomuser.me API
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Please note that while the randomuser.me API provides a convenient way to generate random user data for testing and development purposes, it has certain limitations and known issues:
 
-## Learn More
+- **Gender Filter Bug:** The API may not consistently filter user data according to gender. Users may encounter instances where the generated data does not match the specified gender filter.
+  
+- **No Endpoint for Single User Detail:** The API does not offer an endpoint to fetch details of a single user. Users must retrieve a list of users and select one from the list if they need information about a specific user.
 
-To learn more about Next.js, take a look at the following resources:
+- **Limited Search Functionality:** The API does not support searching for users based on specific queries such as name, email, or location. Users cannot retrieve specific user profiles using search parameters.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+While randomuser.me remains a useful tool for generating mock user data, please be aware of these limitations when using the API in your projects.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+The project is organized into distinct directories, each serving a specific purpose:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **`app`**: This directory contains the routes folder, defining the client-side navigation and structure of the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **`lib`**: The `lib` directory hosts configuration files for libraries used in the project, such as Firebase. This ensures a centralized and organized approach to managing external dependencies.
+
+- **`shared/components`**: Essential components that are reused across the project reside here. These components contribute to a consistent and cohesive user interface.
+
+- **`shared/types`**: TypeScript type definitions that are shared across the client-side codebase. These types enhance code clarity and reduce the likelihood of errors.
+
+- **`shared/ui`**: UI components that are shared across the project structure are located here. These components encapsulate visual elements to maintain a unified design.
+
+- **`shared/utils`**: Utility functions that are shared across the client-side codebase are placed in this directory, promoting code reuse and maintainability.
+
+- **`shared/services`**: This directory houses services responsible for consuming APIs and handling data retrieval. These services enhance separation of concerns and facilitate clean, modular code.
+
+- **`context`**: The `context` directory includes React context implementations, promoting state management and sharing data between components in an efficient manner.
+
+## Contributing
+
+I invite contributions from the community. Feel free to contribute by forking the repository, making improvements, and creating pull requests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
