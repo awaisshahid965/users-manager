@@ -1,25 +1,15 @@
 import React, { FC, useState } from 'react'
-import { profileCardStyles, profileIconActiveClasses, profileIconClasses } from './profile-card.styles'
+import { profileCardStyles } from './profile-card.styles'
 import { IProfileCard, ProfileOverviewTypes } from './profile-card.types'
-import { FaMap, FaLock, FaPhone, FaRegEnvelope, FaUserNinja, FaCalendar } from 'react-icons/fa6'
 import ProfileCardOverview from './profile-card-overview/profile-card-overview'
 import Map from '../map/map'
+import ProfileCardOverviewIcons from './profile-card-overview-icons/profile-card-overview-icons'
 
 const ProfileCard: FC<IProfileCard> = ({ user }) => {
     const [profileOverviewType, setProfileOverviewType] = useState<ProfileOverviewTypes>(ProfileOverviewTypes.USERNAME)
 
     const onProfileIconOver = (profileType: ProfileOverviewTypes) => {
         setProfileOverviewType(profileType)
-    }
-
-    // Higher order function to avoid if-elif
-    const getProfileIconOverForType = (profileType: ProfileOverviewTypes) => () => onProfileIconOver(profileType)
-
-    const getActiveClassForProfileIcon = (profileType: ProfileOverviewTypes) => {
-        if (profileType === profileOverviewType) {
-            return profileIconActiveClasses
-        }
-        return ''
     }
 
     return (
@@ -33,32 +23,10 @@ const ProfileCard: FC<IProfileCard> = ({ user }) => {
                     </div>
 
                     <ProfileCardOverview user={user} profileOverviewType={profileOverviewType} />
-                    <div className="flex flex-row w-full justify-around max-w-[48rem] mx-auto my-8 box-content">
-                        <FaUserNinja
-                            className={`${profileIconClasses} ${getActiveClassForProfileIcon(ProfileOverviewTypes.USERNAME)}`}
-                            onMouseOver={getProfileIconOverForType(ProfileOverviewTypes.USERNAME)}
-                        />
-                        <FaRegEnvelope
-                            className={`${profileIconClasses} ${getActiveClassForProfileIcon(ProfileOverviewTypes.EMAIL)}`}
-                            onMouseOver={getProfileIconOverForType(ProfileOverviewTypes.EMAIL)}
-                        />
-                        <FaCalendar
-                            className={`${profileIconClasses} ${getActiveClassForProfileIcon(ProfileOverviewTypes.BIRTHDAY)}`}
-                            onMouseOver={getProfileIconOverForType(ProfileOverviewTypes.BIRTHDAY)}
-                        />
-                        <FaMap
-                            className={`${profileIconClasses} ${getActiveClassForProfileIcon(ProfileOverviewTypes.LOCATION)}`}
-                            onMouseOver={getProfileIconOverForType(ProfileOverviewTypes.LOCATION)}
-                        />
-                        <FaPhone
-                            className={`${profileIconClasses} ${getActiveClassForProfileIcon(ProfileOverviewTypes.CELL)}`}
-                            onMouseOver={getProfileIconOverForType(ProfileOverviewTypes.CELL)}
-                        />
-                        <FaLock
-                            className={`${profileIconClasses} ${getActiveClassForProfileIcon(ProfileOverviewTypes.PASSWORD)}`}
-                            onMouseOver={getProfileIconOverForType(ProfileOverviewTypes.PASSWORD)}
-                        />
-                    </div>
+                    <ProfileCardOverviewIcons
+                        profileOverviewType={profileOverviewType}
+                        onProfileIconOver={onProfileIconOver}
+                    />
                 </div>
             </div>
             <div className="max-w-[60rem] h-[40rem] overflow-hidden mx-auto relative mb-12">

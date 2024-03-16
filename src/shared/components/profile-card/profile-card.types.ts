@@ -21,3 +21,8 @@ export type ProfileOverviewData = {
 export interface ProfileCardOverviewProps extends IProfileCard {
     profileOverviewType: ProfileOverviewTypes
 }
+
+export interface ProfileCardOverviewIconsProps {
+    profileOverviewType: ProfileOverviewTypes
+    onProfileIconOver: (profileType: ProfileOverviewTypes) => void
+}
