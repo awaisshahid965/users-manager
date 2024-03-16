@@ -1,3 +1,4 @@
+import { Filter } from '../types/filter'
 import { RandomUserData } from '../types/random-user'
 import { IUser } from '../types/user'
 import HttpClient from './http-client'
@@ -8,13 +9,6 @@ const userApiHeaderConfig = { 'Content-Type': 'application/json' }
 enum UserEndpoints {
     ALL_USERS = '/',
 }
-
-type Filter = {
-    page?: string
-    gender?: 'male' | 'female'
-}
-
-const DEFAULT_PAGE_SIZE = '10'
 
 class UserService extends HttpClient {
     private static _convertRandomApiResultsToUserArray(data: RandomUserData): Array<IUser> {
@@ -36,8 +30,8 @@ class UserService extends HttpClient {
         return {
             ...(page && { page }),
             ...(gender && { gender }),
-            seed: 'kwanso',
-            results: DEFAULT_PAGE_SIZE,
+            seed: filter.seed,
+            results: filter.results,
         }
     }
 

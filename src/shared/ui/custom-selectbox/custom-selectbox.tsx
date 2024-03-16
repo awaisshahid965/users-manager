@@ -21,6 +21,7 @@ const CustomSelectBox: FC<SelectBoxProps> = ({ options, onChange, disabled, defa
             disabled={disabled}
             className={`block mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 ${classes}`}
         >
+            <option value="">Select Option</option>
             {options.map((option, index) => (
                 <option key={index} value={option}>
                     {option}

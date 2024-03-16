@@ -2,23 +2,18 @@ import React, { FC, PropsWithChildren, useState } from 'react'
 import { UserProvider } from './user.context'
 import { IUserContext, userContextDefaults } from './user.interface'
 import UserService from '@/shared/services/user-service'
+import { Filter } from '@/shared/types/filter'
 
 const UserContainer: FC<PropsWithChildren> = ({ children }) => {
     const [state, setState] = useState<IUserContext>(userContextDefaults)
 
-    // const loadUsers = async () => {
-    //     const users = await UserService.fetchUsers()
-    //     console.log(users)
-    // }
-
-    // useEffect(() => {
-    //     loadUsers()
-    // }, [])
-
-    const fetchUsers = async (page?: string, gender?: 'male' | 'female') => {
+    const fetchUsers = async (filter: Filter) => {
+        const { page, gender, seed, results } = filter
         const users = await UserService.fetchUsers({
-            ...(page && { page }),
-            ...(gender && { gender }),
+            page,
+            gender,
+            seed,
+            results,
         })
 
         setState((prev) => ({

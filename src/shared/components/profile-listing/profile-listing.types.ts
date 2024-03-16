@@ -1,8 +1,7 @@
-export interface IProfileListRow {
-    text: string
-    onClickView?: () => void
-}
+import { IUser } from '@/shared/types/user'
+
+export interface IProfileListRow extends IUser {}
 
 export interface IProfileListing {
-    profiles: Array<IProfileListRow>
+    profiles: Array<IUser>
 }
