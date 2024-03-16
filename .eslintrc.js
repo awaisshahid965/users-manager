@@ -48,6 +48,7 @@ module.exports = {
 		'semi': [
 			'error',
 			'never'
-		]
+		],
+		"react-hooks/exhaustive-deps": "off"
 	}
 }
