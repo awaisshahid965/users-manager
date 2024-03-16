@@ -10,4 +10,6 @@ export interface IUser {
     gender: string
     username: string
     imageUri: string
+    dob: string
+    address: string
 }

@@ -1,6 +1,7 @@
 import { Filter } from '../types/filter'
 import { RandomUserData } from '../types/random-user'
 import { IUser } from '../types/user'
+import { getDateFromISOString } from '../utils'
 import HttpClient from './http-client'
 
 const USER_API_ENDPOINT = process.env.NEXT_PUBLIC_USER_API_ENDPOINT
@@ -22,6 +23,8 @@ class UserService extends HttpClient {
             gender: user.gender,
             username: user.login.username,
             imageUri: user.picture.large,
+            dob: getDateFromISOString(user.dob.date),
+            address: `${user.location.street.number}, ${user.location.street.name}`,
         }))
     }
 

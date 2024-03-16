@@ -13,11 +13,11 @@ const ProfileCardOverview: FC<ProfileCardOverviewProps> = ({ user, profileOvervi
         },
         [ProfileOverviewTypes.BIRTHDAY]: {
             title: 'My birthday is',
-            text: '',
+            text: user.dob,
         },
         [ProfileOverviewTypes.LOCATION]: {
             title: 'My address is',
-            text: '',
+            text: user.address,
         },
         [ProfileOverviewTypes.CELL]: {
             title: 'My phone number is',
