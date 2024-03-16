@@ -7,6 +7,11 @@ import { Filter } from '@/shared/types/filter'
 const UserContainer: FC<PropsWithChildren> = ({ children }) => {
     const [state, setState] = useState<IUserContext>(userContextDefaults)
 
+    const getUserById = (userId: string) => {
+        const user = state.users.find((user) => user.id === userId)
+        return user
+    }
+
     const fetchUsers = async (filter: Filter) => {
         const { page, gender, seed, results } = filter
         const users = await UserService.fetchUsers({
@@ -22,7 +27,7 @@ const UserContainer: FC<PropsWithChildren> = ({ children }) => {
         }))
     }
 
-    return <UserProvider value={{ ...state, fetchUsers }}>{children}</UserProvider>
+    return <UserProvider value={{ ...state, fetchUsers, getUserById }}>{children}</UserProvider>
 }
 
 export default UserContainer
